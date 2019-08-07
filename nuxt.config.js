@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser')
+
 module.exports = {
   mode: 'universal', //'spa',
   /*
@@ -86,5 +88,10 @@ module.exports = {
     //     component: resolve(__dirname, '')
     //   })
     // }
-  }  
+  },
+  // serverMiddleware只是在vue-server-renderer之前在服务器端运行，可用于服务器特定的任务，如处理API请求或服务资产。
+  serverMiddleware: [
+    bodyParser.json(),
+    '~/api'
+  ]
 }
